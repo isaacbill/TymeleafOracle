@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>ICMS Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container my-2">
+        <h1>BLU_SD Table</h1>
+        <img  th:src="@{images/icms.png}"  width="300" height="200" alt="logo">
+        
+               
+   <form th:action="@{/search}" method="get">
+  <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by SD_REG_NO or REGISTRATION_ID " size="50" >
+  <button type="submit" class="btn btn-info" >Search</button>
+  <button type="submit" class="btn btn-info" >Reset</button>
+    <!-- <a th:href="@{/showNewForm}" class="btn btn-primary btn-sm mb-3"> Add entry </a> --> 
+  </form>
+
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th>SD_REG_NO</th>
+                    <th>REGISTRATION_ID</th>
+                    <th>VERSION</th>
+                   <th>SD_VERSION</th>
+                   <th>SD_STATUS</th>
+          			<th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+            <!-- <div th:switch="${Records}"> --> 
+            <!-- <tr th:each="BLU_SD : ${Records}"> -->  
+           			 <tr th:each="BLU_SD : ${list}" th:field="${BLU_SD}">
+                    <td th:text="${BLU_SD.SD_REG_NO}"></td>
+                    <td th:text="${BLU_SD.REGISTRATION_ID}"></td>
+                    <td th:text="${BLU_SD.VERSION}"></td>
+                    <td th:text="${BLU_SD.SD_VERSION}"></td>
+                    <td th:text="${BLU_SD.SD_STATUS}"></td>
+                    <td> <a th:href="@{/}" class="btn btn-primary">Update</a>
+                        <a th:href="@{/}" class="btn btn-danger">Delete</a>
+                    </td>
+                   
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</body>
+
+</html>

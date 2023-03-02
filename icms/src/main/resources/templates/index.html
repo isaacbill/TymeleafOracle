@@ -1,0 +1,46 @@
+<html lang="en">    
+<head>    
+<title>Index Page</title>  
+    <link th:href="@{/style.css}" rel="stylesheet" />
+  
+</head>    
+<a class="btn btn-info" href="/index/addDetail">Details</a>
+
+<body>
+    <div th:switch="${details}">
+
+        <div th:case="*">
+            <h2>Details</h2>
+            <table border="1px solid black;">
+                <thead>
+                <tr>
+                    <th>SD_REG_NO</th>
+                    <th>REGISTRATION_ID</th>
+                    <th>VERSION</th>
+                    <th>SD_VERSION</th>
+                    <th>SD_STATUS</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="detail : ${details}">
+                    <td th:text="${detail.SD_REG_NO}"></td>
+                    <td th:text="${detail.REGISTRATION_ID}"></td>
+                    <td th:text="${detail.VERSION}"></td>
+                    <td th:text="${detail.SD_VERSION}"></td>
+                    <td th:text="${detail.SD_STATUS}"></td>
+                    <td>
+                    <a th:href="/@{'/edit/' + ${detail.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="/@{'/delete/' + ${detail.id}}">Delete</a>
+              </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    </body>
+
+</html>
